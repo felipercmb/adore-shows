@@ -7,16 +7,19 @@
   function closeMenu() { menu?.classList.remove('open'); toggle?.setAttribute('aria-expanded', 'false'); toggle?.setAttribute('aria-label', 'Abrir menu'); document.body.classList.remove('menu-open'); }
   toggle?.addEventListener('click', () => { const open = toggle.getAttribute('aria-expanded') !== 'true'; menu.classList.toggle('open', open); toggle.setAttribute('aria-expanded', String(open)); toggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu'); document.body.classList.toggle('menu-open', open); });
   menu?.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeMenu));
+  $('.nav')?.addEventListener('focusout', (event) => {
+    if (toggle?.getAttribute('aria-expanded') === 'true' && event.relatedTarget !== toggle && !menu?.contains(event.relatedTarget)) closeMenu();
+  });
   document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && toggle?.getAttribute('aria-expanded') === 'true') { closeMenu(); toggle.focus(); } });
   window.matchMedia('(min-width: 801px)').addEventListener('change', (e) => { if(e.matches) closeMenu(); });
   const catalog = $('[data-catalog]');
   if (catalog) {
     const labels = {gospel:'Gospel',catolico:'Católico',sertanejo:'Sertanejo',forro:'Forró',pregadores:'Pregadores',axe:'Axé','samba-e-pagode':'Samba e pagode',mpb:'MPB',rock:'Rock',internacional:'Internacional'};
     const input = $('#artist-search'), grid = $('#artist-grid'), status = $('#catalog-status'), more = $('#load-more');
-    let data, pending, genre = catalog.dataset.genre, limit = Number(catalog.dataset.limit), query = '';
+    let data, pending, genre = catalog.dataset.genre, limit = Number(catalog.dataset.limit), query = '', catalogUnavailable = false;
     const normalize = (s) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('pt-BR');
     const esc = (s) => s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-    function getData() { return data ? Promise.resolve(data) : (pending ||= fetch(sitePath('/assets/catalog.json')).then(r => { if (!r.ok) throw Error('catalog'); return r.json(); }).then(rows => data = rows.map(a => ({...a, search: normalize(a.name)}))).catch(err => { pending = null; throw err; })); }
+    function getData() { return data ? Promise.resolve(data) : (pending ||= fetch(sitePath('/assets/catalog.json')).then(r => { if (!r.ok) throw Error('catalog'); return r.json(); }).then(rows => { data = rows.map(a => ({...a, search: normalize(a.name)})); catalogUnavailable = false; return data; }).catch(err => { pending = null; catalogUnavailable = true; throw err; })); }
     const arrow = '<svg class="icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18 18 6M6 6h12v12"/></svg>';
     async function render() {
       status.textContent = 'Consultando catálogo…'; more.disabled = true;
@@ -38,7 +41,7 @@
     }
     function updateFilters() { catalog.querySelectorAll('[data-genre]').forEach(a => { const active = a.dataset.genre === genre; a.classList.toggle('active',active); if(active) a.setAttribute('aria-current','true'); else a.removeAttribute('aria-current'); }); }
     input.addEventListener('input', () => { query=input.value.trim(); limit=12; render(); });
-    catalog.querySelectorAll('a[data-genre]').forEach(a => a.addEventListener('click', e => { if(e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || catalog.dataset.genre) return; e.preventDefault(); genre=a.dataset.genre; limit=12; updateFilters(); render(); }));
+    catalog.querySelectorAll('a[data-genre]').forEach(a => a.addEventListener('click', e => { if(e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || catalog.dataset.genre || catalogUnavailable) return; e.preventDefault(); genre=a.dataset.genre; limit=12; updateFilters(); render(); }));
     more.addEventListener('click', async () => { const previous=grid.children.length; limit+=12; await render(); grid.children[previous]?.focus({preventScroll:true}); });
     input.addEventListener('focus', () => { getData().catch(() => {}); },{once:true});
   }
@@ -50,8 +53,12 @@
     else if(params.get('segmento') === 'gospel') { $('#event-type').value = 'Evento gospel ou encontro de louvor'; if(!artist) $('#artist').value = 'Gostaria de sugestões de artistas gospel'; }
     const today = new Date(); const local = `${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
     $('#date').min = local;
+    const requiredTextFields = [[$('#name'), 'Informe seu nome.'], [$('#city'), 'Informe a cidade e o estado do evento.']];
+    requiredTextFields.forEach(([field]) => field.addEventListener('input', () => field.setCustomValidity('')));
     form.addEventListener('submit', (e) => {
-      e.preventDefault(); if(!form.reportValidity()) return;
+      e.preventDefault();
+      requiredTextFields.forEach(([field, message]) => field.setCustomValidity(field.value.trim() ? '' : message));
+      if(!form.reportValidity()) return;
       const values = new FormData(form), value = key => String(values.get(key)||'').trim();
       const date = value('date') ? value('date').split('-').reverse().join('/') : 'A definir';
       const message = ['Olá, equipe Adore Shows! Gostaria de consultar uma atração para meu evento.', '', `Nome: ${value('name')}`, value('organization') ? `Prefeitura, empresa ou instituição: ${value('organization')}` : '', `Artista ou estilo: ${value('artist') || 'Gostaria de sugestões'}`, `Cidade/UF: ${value('city')}`, `Data: ${date}`, `Tipo de evento: ${value('type')}`, value('message') ? `Mais informações: ${value('message')}` : ''].filter(Boolean).join('\n');
