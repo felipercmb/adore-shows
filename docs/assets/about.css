@@ -1,0 +1,93 @@
+/* The institutional page: a stage photograph, a clear history, and a human scale. */
+.about-page{background:#f2f4ef;color:#103a3f}
+.about-opening{padding:40px 0 94px}
+.about-opening .breadcrumb{margin-bottom:50px}
+.about-opening-grid{display:grid;grid-template-columns:1.45fr 1fr;align-items:end;gap:75px;margin-bottom:58px}
+.about-opening h1{font-size:clamp(58px,6.4vw,92px);line-height:1.02;letter-spacing:-.05em;font-weight:650;max-width:12ch}
+.about-opening h1>span{color:#398aa5}
+.about-opening-copy>p:first-child{font-family:var(--display);font-size:25px;line-height:1.2;letter-spacing:-.025em;color:#103a3f;margin-bottom:23px}
+.about-opening-copy>p{font-size:16px;line-height:1.8;color:#4b6261;max-width:42ch}
+.about-opening-copy .text-link{font-size:13px;margin-top:27px}
+.about-stage{position:relative;margin:0;height:360px;border-radius:160px 45px 160px 45px;overflow:hidden;background:#082f34;isolation:isolate}
+.about-stage img{width:100%;height:100%;object-fit:cover;object-position:50% 66%;filter:saturate(.7)}
+.about-stage:after{content:'';position:absolute;inset:65% 0 0;background:linear-gradient(transparent,#03151ad9);pointer-events:none}
+.about-stage figcaption{position:absolute;bottom:25px;left:55px;z-index:1;font-size:11px;color:#ebf2ef;max-width:70%;line-height:1.6}
+.about-page h2{font-size:clamp(40px,4.4vw,62px);line-height:1.08;letter-spacing:-.045em;font-weight:600}
+.about-history{background:#082f34;color:#f2f4ef;border-radius:80px 80px 0 0;padding:100px 0 125px}
+.about-history-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(65px,9vw,140px);align-items:start}
+.about-history .about-history-copy h2{font-family:var(--reading);font-weight:450;font-size:clamp(36px,3.8vw,52px);letter-spacing:-.025em;line-height:1.16;text-wrap:wrap;margin:0 0 32px}
+.about-history-copy>p{font-size:16px;line-height:1.85;color:#d0ded9;margin:0 0 22px;max-width:53ch}
+.about-history-copy>p:last-child{margin-bottom:0}
+.about-facts{margin:6px 0 0;padding:0;display:grid;gap:38px}
+.about-facts dt{margin:0}
+.about-fact-prefix{display:block;font-family:var(--reading);font-size:14px;line-height:1.4;font-weight:400;color:#d0ded9;margin-bottom:10px}
+.about-fact-value{display:flex;align-items:baseline;gap:12px;font-family:Barlow,sans-serif;font-size:72px;font-weight:600;line-height:1;letter-spacing:0;color:#81d5de}
+.about-fact-value>span{font-family:var(--reading);font-size:25px;font-weight:400;letter-spacing:-.01em}
+.about-facts dd{font-family:var(--reading);font-size:15px;line-height:1.6;color:#d0ded9;margin:10px 0 0;max-width:29ch}
+.about-gospel{padding:95px 0 100px;background:#e1ebe5;border-radius:65px 65px 0 0;margin-top:-45px;position:relative}
+.about-gospel-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(55px,7vw,100px);align-items:center}
+.about-gospel .about-gospel-copy h2{font-family:var(--reading);font-weight:450;font-size:clamp(36px,3.8vw,52px);letter-spacing:-.025em;line-height:1.16;text-wrap:wrap;margin:0 0 32px}
+.about-gospel-copy>p{font-size:16px;line-height:1.85;color:#45605e;margin-bottom:22px;max-width:53ch}
+.about-gospel-copy .button{margin-top:8px;font-weight:500}
+.about-gospel-artists{min-width:0}
+.about-voices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:0}
+.about-voices a{min-width:0}
+.about-voices img{aspect-ratio:3/4;object-fit:cover;object-position:50% 25%;border-radius:70px 70px 18px 18px;width:100%;height:auto;filter:saturate(.75);transition:filter 250ms ease,transform 350ms var(--ease-live)}
+.about-voices span{font-size:13px;display:block;margin-top:12px;line-height:1.4}
+.about-voices a:hover img{filter:saturate(1);transform:translateY(-4px)}
+.about-gospel-selection{font-size:14px;line-height:1.7;color:#45605e;margin:26px 0 0;max-width:47ch}
+.about-gospel-selection strong{font-weight:500;color:#103a3f}
+.about-gospel-artists .about-catalog-note{font-size:12px;line-height:1.6;color:#45605e;margin:12px 0 0;max-width:47ch}
+.about-audiences{padding:90px 0 100px}
+.about-section-heading{display:grid;grid-template-columns:1.1fr 1fr;gap:110px;align-items:end;margin-bottom:45px}
+.about-section-heading>p{font-size:16px;line-height:1.75;color:#4b6261}
+.about-audience-list{display:flex;flex-direction:column;gap:16px}
+.about-audience-list article{display:grid;grid-template-columns:1fr 1.1fr;gap:75px;padding:40px 50px;background:#e4ece5;border-radius:38px}
+.about-audience-list article:nth-child(2){background:#d9e7df;border-radius:55px 28px 55px 28px}
+.about-audience-list h3{font-size:31px;line-height:1.12;letter-spacing:-.03em;max-width:17ch}
+.about-audience-list p{font-size:14px;line-height:1.8;color:#45605e;max-width:56ch;margin-bottom:18px}
+.about-audience-list .text-link{font-size:12px}
+.about-process{padding:15px 0 115px}
+.about-process .process-intro h2{font-size:clamp(38px,4vw,56px)}
+.about-process .process-intro>p{max-width:36ch;font-size:15px;line-height:1.8;margin:25px 0}
+.about-process .steps li:first-child{padding-top:0}
+@media(max-width:1100px){.about-opening-grid{gap:45px}.about-section-heading{gap:60px}.about-audience-list article{gap:40px}}
+@media(max-width:800px){.about-opening-grid{gap:32px;grid-template-columns:1.2fr 1fr}.about-opening h1{font-size:56px}.about-opening-copy>p:first-child{font-size:22px}.about-opening-copy>p{font-size:14px}.about-page h2{font-size:40px}.about-stage{height:330px;border-radius:95px 35px 95px 35px}.about-audience-list article{padding:32px;gap:30px}.about-audience-list h3{font-size:27px}.about-section-heading{gap:35px}.about-section-heading>p{font-size:14px}}
+@media(max-width:540px){.about-opening{padding-top:22px;padding-bottom:70px}.about-opening .breadcrumb{margin-bottom:32px}.about-opening-grid{grid-template-columns:1fr;gap:28px;margin-bottom:34px}.about-opening h1{font-size:clamp(43px,12vw,62px);line-height:1.02;max-width:13ch}.about-opening-copy>p:first-child{font-size:22px;margin-bottom:18px}.about-opening-copy>p{font-size:14px;line-height:1.8;max-width:38ch}.about-opening-copy .text-link{font-size:12px;margin-top:23px}.about-stage{height:260px;border-radius:80px 24px 80px 24px}.about-stage img{object-position:50% 60%}.about-stage figcaption{left:24px;bottom:20px;font-size:9px;max-width:76%}.about-history{padding:65px 0 90px;border-radius:40px 40px 0 0}.about-page h2{font-size:37px;line-height:1.08}.about-gospel{padding:62px 0 65px;border-radius:35px 35px 0 0;margin-top:-30px}.about-audiences{padding:65px 0}.about-section-heading{grid-template-columns:1fr;gap:22px;margin-bottom:30px}.about-section-heading>p{font-size:14px}.about-audience-list article{grid-template-columns:1fr;gap:18px;padding:27px;border-radius:28px}.about-audience-list article:nth-child(2){border-radius:38px 25px 38px 25px}.about-audience-list h3{font-size:28px;max-width:17ch}.about-audience-list p{font-size:13px;line-height:1.8}.about-audience-list .text-link{font-size:11px}.about-process{padding:0 0 90px}.about-process .process-intro h2{font-size:36px}.about-process .process-intro>p{font-size:14px}.about-process .steps h3{font-size:25px}.about-process .steps p{font-size:13px}}
+@media(prefers-reduced-motion:reduce){.about-voices a:hover img{transform:none}}
+body[data-motion="off"] .about-voices a:hover img{transform:none}
+
+@media(max-width:900px){
+  .about-history-grid{grid-template-columns:1.1fr .9fr;gap:48px}
+  .about-history .about-history-copy h2{font-size:36px}
+  .about-history-copy>p{font-size:15px}
+  .about-fact-value{font-size:64px}
+  .about-fact-value>span{font-size:22px}
+  .about-facts dd{font-size:14px}
+}
+@media(max-width:640px){
+  .about-history-grid{grid-template-columns:1fr;gap:40px}
+  .about-history .about-history-copy h2{font-size:34px;margin-bottom:26px}
+  .about-history-copy>p{font-size:15px;line-height:1.8;margin-bottom:20px}
+  .about-facts{gap:30px;margin:0}
+  .about-fact-value{font-size:60px}
+  .about-fact-value>span{font-size:23px}
+  .about-fact-prefix{font-size:13px;margin-bottom:7px}
+  .about-facts dd{font-size:14px;margin-top:7px;max-width:none}
+}
+
+@media(max-width:900px){
+  .about-gospel-grid{grid-template-columns:1fr;gap:42px}
+  .about-gospel .about-gospel-copy h2{font-size:36px}
+  .about-gospel-copy>p{font-size:15px;max-width:58ch}
+  .about-gospel-artists{max-width:540px}
+}
+@media(max-width:640px){
+  .about-gospel .about-gospel-copy h2{font-size:34px;margin-bottom:26px}
+  .about-gospel-copy>p{font-size:15px;line-height:1.8;margin-bottom:20px}
+  .about-gospel-grid{gap:36px}
+  .about-voices{gap:12px}
+  .about-voices img{border-radius:55px 55px 14px 14px}
+  .about-voices span{font-size:12px;line-height:1.5;margin-top:10px}
+  .about-gospel-selection{font-size:14px;margin-top:24px}
+}

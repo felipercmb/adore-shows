@@ -1,0 +1,65 @@
+/* A city's concert announcement: quiet type, a large stage, living sound. */
+.municipal-feature{--municipal-shift:0px;position:relative;isolation:isolate;overflow:clip;background:#0b343a;color:#f2f4ef;border-radius:48% 48% 0 0 / 64px 64px 0 0;padding:120px 0 130px;scroll-margin-top:0}
+.municipal-layout{display:grid;grid-template-columns:1.13fr 1fr;gap:clamp(50px,7vw,105px);align-items:center}
+.municipal-copy{position:relative;z-index:2}
+.municipal-copy h2{font-family:var(--reading);font-weight:450;letter-spacing:-.035em;line-height:1.07;text-wrap:wrap;margin:0 0 30px}
+.municipal-topic{display:block;font-size:15px;font-weight:500;letter-spacing:0;color:#90cfcd;margin-bottom:30px}
+.municipal-headline{display:block;font-size:clamp(44px,4.6vw,70px)}
+.municipal-copy>p{font-size:16px;line-height:1.85;color:#e0ebe7;margin:0 0 20px;max-width:49ch}
+.municipal-copy>.municipal-detail{font-size:14px;line-height:1.85;color:#abc7c4}
+.municipal-actions{display:flex;align-items:flex-start;flex-direction:column;gap:17px;margin-top:30px}
+.municipal-actions .municipal-booking{background:#91ded8;color:#0b343a;border-radius:60px;min-height:62px;padding:12px 18px 12px 26px;gap:22px;font-size:13px;font-weight:550;transform:none;transition:background 200ms ease,transform 280ms var(--ease-live)}
+.municipal-button-sound{width:36px;height:36px;display:grid;place-items:center;border:1px solid #0b343a35;border-radius:50%}
+.municipal-button-sound svg{width:25px;height:25px;transition:transform 280ms var(--ease-live)}
+.municipal-actions .text-link{font-size:12px;font-weight:450;color:#d6eae5;border-color:#d6eae560}
+.municipal-actions a:focus-visible{outline:2px solid #f2f4ef;outline-offset:6px}
+.municipal-actions .municipal-booking:focus-visible{background:#b4f0e7;transform:translateY(-2px)}
+.municipal-booking:focus-visible .municipal-button-sound svg{transform:scale(1.15)}
+.municipal-actions .municipal-booking:active{transform:scale(.97);transition-duration:160ms}
+.municipal-motion-toggle{display:block;margin-top:24px;min-height:36px;padding:7px 12px;color:#abc7c4;border-color:#abc7c438;font-size:10px}
+.municipal-motion-toggle[hidden]{display:none}
+.municipal-stage{position:relative;margin:0;padding:25px 5px 0;min-width:0}
+.municipal-photo-frame{overflow:hidden;aspect-ratio:4/5;border-radius:46% 46% 12% 12% / 34% 34% 10% 10%;transform:translate3d(0,var(--municipal-shift),0) rotate(-5deg);background:#16464b;position:relative;z-index:1}
+.municipal-photo-frame img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;transform:scale(1.12) rotate(5deg);transform-origin:50% 0;filter:saturate(.9)}
+.municipal-stage figcaption{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 16px;margin:35px 8px 0;font-size:11px;line-height:1.6;color:#abc7c4;position:relative;z-index:1}
+.municipal-stage figcaption span:first-child{font-size:14px;color:#e0ebe7}
+.municipal-sound-field{position:absolute;inset:-8% -14% 1%;pointer-events:none;transition:transform 650ms var(--ease-live)}
+.municipal-wave{position:absolute;inset:0;width:100%;height:100%;overflow:visible;opacity:.38;transform-origin:50% 50%;animation:municipal-resonance 11s ease-in-out infinite alternate paused}
+.municipal-wave path{stroke:#77c8c6;stroke-width:1;vector-effect:non-scaling-stroke}
+.municipal-wave:nth-child(2){opacity:.24;animation-duration:14s;animation-delay:-5s;--wave-scale:1.08;--wave-turn:3deg;transform:scale(1.08) rotate(3deg)}
+.municipal-wave:nth-child(3){opacity:.15;animation-duration:17s;animation-delay:-9s;--wave-scale:1.16;--wave-turn:-3deg;transform:scale(1.16) rotate(-3deg)}
+.municipal-feature[data-motion-running="true"] .municipal-wave{animation-play-state:running}
+.municipal-feature:has(.municipal-booking:focus-visible) .municipal-sound-field{transform:scale(1.08)}
+@media(hover:hover) and (pointer:fine){
+ .municipal-actions .municipal-booking:hover{background:#b4f0e7;transform:translateY(-2px)}
+ .municipal-booking:hover .municipal-button-sound svg{transform:scale(1.15)}
+ .municipal-feature:has(.municipal-booking:hover) .municipal-sound-field{transform:scale(1.08)}
+}
+@keyframes municipal-resonance{
+ from{transform:scale(var(--wave-scale,1)) rotate(var(--wave-turn,-2deg))}
+ to{transform:scale(calc(var(--wave-scale,1) + .045)) rotate(calc(var(--wave-turn,-2deg) + 4deg))}
+}
+@media(max-width:1100px){
+ .municipal-layout{gap:55px}.municipal-headline{font-size:4.8vw}.municipal-copy>p{font-size:15px}.municipal-copy>.municipal-detail{font-size:13px}
+}
+@media(max-width:800px){
+ .municipal-feature{padding:85px 0 100px;border-radius:48% 48% 0 0 / 40px 40px 0 0}
+ .municipal-layout{grid-template-columns:1fr;gap:60px}.municipal-copy{max-width:560px}.municipal-headline{font-size:clamp(40px,7.5vw,59px)}
+ .municipal-stage{width:68%;max-width:480px;justify-self:center}.municipal-actions{flex-direction:row;align-items:center;flex-wrap:wrap;gap:20px 28px}
+}
+@media(max-width:540px){
+ .municipal-feature{padding:65px 0 83px;border-radius:48% 48% 0 0 / 28px 28px 0 0}.municipal-layout{gap:38px}
+ .municipal-topic{font-size:13px;margin-bottom:24px}.municipal-copy h2{margin-bottom:25px}.municipal-headline{font-size:clamp(35px,9.3vw,49px);line-height:1.1}
+ .municipal-copy>p{font-size:14px;line-height:1.8}.municipal-copy>.municipal-detail{font-size:13px}
+ .municipal-actions{flex-direction:column;align-items:flex-start;gap:13px;margin-top:26px}
+ .municipal-actions .municipal-booking{max-width:100%;padding:11px 15px 11px 22px;gap:18px;font-size:12px;min-height:60px}
+ .municipal-button-sound{flex-shrink:0;width:32px;height:32px}.municipal-motion-toggle{margin-top:20px}.municipal-stage{width:88%;max-width:360px}
+ .municipal-stage figcaption{font-size:10px;margin:26px 0 0;gap:4px 10px}.municipal-stage figcaption span:first-child{font-size:12px}
+}
+body[data-motion="off"] .municipal-feature *{animation:none!important;transition:none!important}
+body[data-motion="off"] .municipal-sound-field,body[data-motion="off"] .municipal-booking,body[data-motion="off"] .municipal-button-sound svg{transform:none!important}
+@media(prefers-reduced-motion:reduce){
+ .municipal-feature *{animation:none!important;transition:none!important}
+ .municipal-sound-field,.municipal-booking,.municipal-button-sound svg{transform:none!important}
+ .municipal-photo-frame{transform:rotate(-5deg)}
+}

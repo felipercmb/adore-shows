@@ -1,0 +1,62 @@
+/* A concert-poster headline; the supporting copy has its own readable scale. */
+.site-home .live-title {
+  font-size: clamp(88px, 11.4vw, 164px);
+  font-weight: 700;
+  letter-spacing: -.035em;
+  line-height: .99;
+  margin: 0 auto 68px;
+  width: 100%;
+  max-width: 1260px;
+  text-align: left;
+}
+.live-title .title-line:first-child { padding-left: 7%; }
+.site-home .live-title .title-line:last-child {
+  font-size: .79em;
+  margin-top: 12px;
+  text-align: right;
+  padding-right: 3%;
+  letter-spacing: -.035em;
+  line-height: 1.03;
+}
+.live-title .title-blue { color: #6dc4e4; }
+.hero-copy { max-width: 325px; }
+.hero-copy p { margin: 0; font-size: 15px; line-height: 1.65; color: #e2eeeb; }
+.hero-copy .hero-copy-lead {
+  font-family: var(--display);
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 1.18;
+  letter-spacing: -.025em;
+  color: #fff;
+  margin-bottom: 17px;
+}
+.site-home .hero-bottom { column-gap: 65px; }
+@media (max-width: 1100px) {
+  .site-home .live-title { font-size: 11.5vw; }
+  .site-home .hero-bottom { column-gap: 48px; }
+  .hero-copy .hero-copy-lead { font-size: 22px; }
+  .hero-copy p { font-size: 14px; }
+}
+@media (max-width: 800px) {
+  .site-home .live-title { margin-bottom: 58px; }
+  .site-home .hero-bottom { column-gap: 50px; }
+  .hero-copy { max-width: 290px; }
+}
+@media (max-width: 540px) {
+  .site-home .live-inner { padding-top: 153px; min-height: 850px; padding-bottom: 143px; justify-content: flex-start; }
+  .site-home .live-hero { min-height: 850px; }
+  .site-home .live-title { font-size: 14vw; line-height: 1.01; margin-bottom: 61px; }
+  .live-title .title-line:first-child { padding-left: 0; }
+  .site-home .live-title .title-line:last-child { font-size: .91em; line-height: 1; text-align: left; padding-right: 0; margin-top: 7px; max-width: 100%; white-space: normal; text-wrap: wrap; }
+  .site-home .hero-bottom { grid-template-columns: minmax(0,1fr) 125px; gap: 38px 26px; align-items: center; }
+  .hero-copy .hero-copy-lead { font-size: 20px; line-height: 1.2; margin-bottom: 14px; }
+  .hero-copy p { font-size: 13px; line-height: 1.6; }
+  .hero-bottom .discover-link { grid-column: 1 / -1; margin-top: 0; }
+}
+@media (max-width: 359px) {
+  .site-home .live-inner { padding-top: 133px; min-height: 850px; }
+  .site-home .hero-bottom { grid-template-columns: minmax(0,1fr) 104px; column-gap: 24px; }
+  .hero-bottom .round-cta.sound-cta { width: 104px; height: 104px; font-size: 12px; }
+  .hero-copy .hero-copy-lead { font-size: 18px; }
+  .hero-copy p { font-size: 12px; }
+}
